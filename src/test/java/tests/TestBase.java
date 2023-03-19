@@ -43,9 +43,6 @@ public class TestBase
 			driver = new EdgeDriver();
 		}
          
-		//String URL = "https://subscribe.stctv.com/sa-en?";
-		//driver.navigate().to(URL);
-		//driver.manage().window().maximize();
 	}
 
 	@AfterSuite(groups = "regression")

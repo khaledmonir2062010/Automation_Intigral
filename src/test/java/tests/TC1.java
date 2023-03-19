@@ -14,6 +14,10 @@ public class TC1 extends TestBase {
 
 	Subscribe_Page subscription;
 
+	String KSA_URL="https://subscribe.stctv.com/sa-en?";
+	String Bahrain_URL="https://subscribe.stctv.com/bh-en?";
+	String Kuwait_URL="https://subscribe.stctv.com/kw-en?";
+
 
 	public void URL(String Countryinit)
 	{
@@ -28,12 +32,16 @@ public class TC1 extends TestBase {
 		subscription = new Subscribe_Page(driver);
 		URL("sa");
 
+		//Assertion to check that the opened URL is correct as per entered Country initial
+		Assert.assertEquals(KSA_URL,driver.getCurrentUrl());
+
+		//Assertion to check The package Title displayed Correctly
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(4));
 		Assert.assertTrue(subscription.LiteTitle.isDisplayed());
 		Assert.assertTrue(subscription.ClassicTitle.isDisplayed());
 		Assert.assertTrue(subscription.PremuimTitle.isDisplayed());
 
-
+		//Assertion to check that the Price per each package displayed correctly per currency
 		wait.until(ExpectedConditions.visibilityOf(subscription.LitePrice));
 		Assert.assertEquals("15 SAR/month", subscription.LitePrice.getText());		
 
@@ -51,13 +59,16 @@ public class TC1 extends TestBase {
 	{
 		subscription = new Subscribe_Page(driver);
 		URL("bh");
+		//Assertion to check that the opened URL is correct as per entered Country initial
+		Assert.assertEquals(Bahrain_URL,driver.getCurrentUrl());
 
+		//Assertion to check The package Title displayed Correctly
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(4));
 		Assert.assertTrue(subscription.LiteTitle.isDisplayed());
 		Assert.assertTrue(subscription.ClassicTitle.isDisplayed());
 		Assert.assertTrue(subscription.PremuimTitle.isDisplayed());
 
-
+		//Assertion to check that the Price per each package displayed correctly per currency
 		wait.until(ExpectedConditions.visibilityOf(subscription.LitePrice));
 		Assert.assertEquals("2 BHD/month", subscription.LitePrice.getText());		
 
@@ -77,12 +88,17 @@ public class TC1 extends TestBase {
 		subscription = new Subscribe_Page(driver);
 		URL("kw");
 
+		//Assertion to check that the opened URL is correct as per entered Country initial
+		Assert.assertEquals(Kuwait_URL,driver.getCurrentUrl());
+
+		//Assertion to check The package Title displayed Correctly
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(4));
 		Assert.assertTrue(subscription.LiteTitle.isDisplayed());
 		Assert.assertTrue(subscription.ClassicTitle.isDisplayed());
 		Assert.assertTrue(subscription.PremuimTitle.isDisplayed());
 
-
+		
+		//Assertion to check that the Price per each package displayed correctly per currency
 		wait.until(ExpectedConditions.visibilityOf(subscription.LitePrice));
 		Assert.assertEquals("1.2 KWD/month", subscription.LitePrice.getText());		
 
